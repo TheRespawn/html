@@ -1,6 +1,15 @@
 // Wait for the entire HTML document to be fully loaded and parsed
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- INITIALIZE AOS (ANIMATE ON SCROLL) ---
+    AOS.init({
+        duration: 800, // Animation duration in milliseconds
+        once: true,    // Whether animation should happen only once
+        offset: 100    // Offset (in px) from the original trigger point
+    });
+
+    // --- MOBILE NAVIGATION SCRIPT ---
+    // ... rest of your script ...
     // --- MOBILE NAVIGATION SCRIPT ---
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
