@@ -1,9 +1,9 @@
 essential:
 
 kalender
-cookie banner
-contact form dass es wirklich mails versendet
-Basic SEO für alle seiten, dass es in der google suche dargestellt wird
+cookie banner #done
+contact form dass es wirklich mails versendet #muss den link für den redirect nen public link mit https nutzen weil formspree es nur zu public dns einträgen weiterleiten kann
+Basic SEO für alle seiten, dass es in der google suche dargestellt wird #done
 
 
 zukunft:
