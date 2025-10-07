@@ -965,3 +965,27 @@ section {
     max-width: 500px;
     z-index: 2001;
 }
+
+/* =========================================
+   15. Page Transition Styles (Overlay Method)
+   ========================================= */
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-dark); /* Our site's background color */
+    z-index: 9999; /* Make it the topmost layer */
+    
+    /* Control visibility */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 400ms ease-in-out, visibility 400ms ease-in-out;
+}
+
+/* State when the overlay is GONE */
+.page-transition-overlay.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}

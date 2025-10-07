@@ -1,23 +1,59 @@
-// Wait for the entire HTML document to be fully loaded and parsed
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- INITIALIZE AOS (ANIMATE ON SCROLL) ---
-    AOS.init({
-        duration: 800, // Animation duration in milliseconds
-        once: true,    // Whether animation should happen only once
-        offset: 100    // Offset (in px) from the original trigger point
+    // --- PAGE TRANSITION SCRIPT (Overlay Method) ---
+    const transitionOverlay = document.querySelector('.page-transition-overlay');
+
+    // Fade out the overlay on page load
+    // We use window.onload which waits for all content (like images) to be ready
+    window.onload = () => {
+        if (transitionOverlay) {
+            transitionOverlay.classList.add('is-hidden');
+        }
+        // Refresh AOS after the page is visible to trigger animations
+        setTimeout(() => {
+            AOS.refresh();
+        }, 400); // Match the CSS transition duration
+    };
+
+    // Intercept link clicks to fade in the overlay
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const isInternalLink = link.href.startsWith(window.location.origin) || link.href.startsWith('.');
+        const isNewTab = link.target === '_blank';
+        const isHashLink = link.href.includes('#');
+
+        if (isInternalLink && !isNewTab && !isHashLink) {
+            e.preventDefault();
+            const destinationUrl = link.href;
+            
+            // Fade the overlay IN
+            if (transitionOverlay) {
+                transitionOverlay.classList.remove('is-hidden');
+            }
+            
+            // Navigate after the overlay has covered the screen
+            setTimeout(() => {
+                window.location.href = destinationUrl;
+            }, 400); // Match the CSS transition duration
+        }
     });
 
-    // ... in js/script.js, after AOS.init() ...
+    // --- INITIALIZE LIBRARIES ---
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+    });
 
-    // --- INITIALIZE COOKIE CONSENT BANNER (GDPR Modal) ---
     window.cookieconsent.initialise({
         "palette": {
             "popup": { "background": "#1a1a1a", "text": "#E5E5E5" },
             "button": { "background": "#FF6600", "text": "#FFFFFF" }
         },
-        "theme": "floating", // Use a floating theme for modal
-        "position": "bottom-right", // Position doesn't matter much with our CSS
+        "theme": "floating",
+        "position": "bottom-right",
         "type": "opt-in",
         "content": {
             "message": "Diese Website verwendet Cookies, um Ihnen ein optimales Erlebnis zu bieten. Wir nutzen Cookies zur Personalisierung von Inhalten und zur Analyse unseres Datenverkehrs.",
@@ -26,13 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
             "link": "Mehr erfahren",
             "href": "datenschutz.html"
         },
-        // Create the dark overlay when the popup opens
         onPopupOpen: function() {
             let overlay = document.createElement('div');
             overlay.className = 'cookie-overlay';
             document.body.appendChild(overlay);
         },
-        // Remove the overlay when a choice is made
         onPopupClose: function() {
             let overlay = document.querySelector('.cookie-overlay');
             if (overlay) {
@@ -40,27 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         onStatusChange: function(status, chosenBefore) {
-            if (this.hasConsented()) {
-                console.log("Consent given. Loading non-essential scripts...");
-                // e.g., loadAnalyticsScript();
-            }
+            if (this.hasConsented()) { console.log("Consent given."); }
         },
         onInitialise: function(status) {
-            if (this.hasConsented()) {
-                console.log("Consent already given. Loading non-essential scripts...");
-                // e.g., loadAnalyticsScript();
-            }
+            if (this.hasConsented()) { console.log("Consent already given."); }
         }
     });
 
-// ... rest of your script ...
-
-// ... rest of your script (mobile nav, etc.) ...
-
+    // --- MOBILE NAVIGATION SCRIPT ---
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
-    const navLinks = document.querySelectorAll('.main-nav a');
-
     if (navToggle && mainNav) {
         navToggle.addEventListener('click', () => {
             mainNav.classList.toggle('nav-open');
@@ -69,41 +92,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const navLinks = document.querySelectorAll('.main-nav a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (mainNav.classList.contains('nav-open')) {
+            if (mainNav && mainNav.classList.contains('nav-open')) {
                 mainNav.classList.remove('nav-open');
-                navToggle.setAttribute('aria-expanded', 'false');
+                if (navToggle) {
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
             }
         });
     });
     
-    // --- PROJECT FILTER SCRIPT ---
+    // --- PROJECT FILTER & LIGHTBOX SCRIPT ---
     const filterContainer = document.querySelector('.filter-bar');
-
     if (filterContainer) {
-        // --- 1. INITIALIZE THE LIGHTBOX ONCE ---
         const lightbox = GLightbox({
             selector: '.glightbox',
             touchNavigation: true,
             loop: true
         });
-
         const filterButtons = filterContainer.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
-
         filterContainer.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('filter-btn')) {
-                return;
-            }
-
-            filterButtons.forEach(button => {
-                button.classList.remove('active');
-            });
+            if (!e.target.classList.contains('filter-btn')) { return; }
+            filterButtons.forEach(button => { button.classList.remove('active'); });
             e.target.classList.add('active');
-
             const filterValue = e.target.dataset.filter;
-            
             projectCards.forEach(card => {
                 const cardCategory = card.dataset.category;
                 if (filterValue === 'all' || cardCategory.includes(filterValue)) {
@@ -112,15 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.display = 'none';
                 }
             });
-
-            // --- 2. TELL THE LIGHTBOX TO REFRESH (Pro-Tip!) ---
             lightbox.reload();
         });
     }
 
     // --- SCROLL TO TOP BUTTON SCRIPT ---
     const scrollTopBtn = document.getElementById("scrollTopBtn");
-
     if (scrollTopBtn) {
         window.onscroll = function() {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -129,13 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrollTopBtn.style.display = "none";
             }
         };
-
         scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
-}); // This is the closing bracket and parenthesis for the DOMContentLoaded listener
+}); // End of DOMContentLoaded
