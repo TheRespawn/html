@@ -1,0 +1,30 @@
+essential:
+
+kalender
+cookie banner
+contact form dass es wirklich mails versendet
+Basic SEO für alle seiten, dass es in der google suche dargestellt wird
+
+
+zukunft:
+(Headless) CMS implementieren dass die website klicky bunty ist
+
+dark light mode
+
+video background
+
+before and after image mit slider oder so
+
+client testimonials mit customer reviews
+
+page transition
+
+faq?
+
+pricing oder services in verschiedene seiten aufteilen. wenn dann jemand nach bmw tuning sucht findet er die bmw page weil nur pricing schwerer zu finden wäre
+
+ Detailed "Request a Quote" Form
+
+What it is: A step beyond our simple contact form. This form has specific fields for "Vehicle Make," "Model," "Year,"
+and often the "VIN" (Fahrgestellnummer). It allows a customer to submit a detailed inquiry for a specific job.
+

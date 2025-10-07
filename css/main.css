@@ -939,3 +939,29 @@ section {
     background-color: var(--color-accent-darker);
     opacity: 1;
 }
+
+/* --- Cookie Consent Banner Font --- */
+.cc-window, .cc-message, .cc-btn {
+    font-family: var(--font-primary) !important;
+}
+/* --- GDPR Modal Overlay --- */
+.cookie-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 2000;
+}
+
+/* Force the cookie window to be a centered modal */
+.cc-window.cc-floating {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    z-index: 2001;
+}

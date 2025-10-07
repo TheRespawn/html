@@ -8,9 +8,55 @@ document.addEventListener('DOMContentLoaded', () => {
         offset: 100    // Offset (in px) from the original trigger point
     });
 
-    // --- MOBILE NAVIGATION SCRIPT ---
-    // ... rest of your script ...
-    // --- MOBILE NAVIGATION SCRIPT ---
+    // ... in js/script.js, after AOS.init() ...
+
+    // --- INITIALIZE COOKIE CONSENT BANNER (GDPR Modal) ---
+    window.cookieconsent.initialise({
+        "palette": {
+            "popup": { "background": "#1a1a1a", "text": "#E5E5E5" },
+            "button": { "background": "#FF6600", "text": "#FFFFFF" }
+        },
+        "theme": "floating", // Use a floating theme for modal
+        "position": "bottom-right", // Position doesn't matter much with our CSS
+        "type": "opt-in",
+        "content": {
+            "message": "Diese Website verwendet Cookies, um Ihnen ein optimales Erlebnis zu bieten. Wir nutzen Cookies zur Personalisierung von Inhalten und zur Analyse unseres Datenverkehrs.",
+            "allow": "Alle akzeptieren",
+            "deny": "Nur Notwendige",
+            "link": "Mehr erfahren",
+            "href": "datenschutz.html"
+        },
+        // Create the dark overlay when the popup opens
+        onPopupOpen: function() {
+            let overlay = document.createElement('div');
+            overlay.className = 'cookie-overlay';
+            document.body.appendChild(overlay);
+        },
+        // Remove the overlay when a choice is made
+        onPopupClose: function() {
+            let overlay = document.querySelector('.cookie-overlay');
+            if (overlay) {
+                overlay.remove();
+            }
+        },
+        onStatusChange: function(status, chosenBefore) {
+            if (this.hasConsented()) {
+                console.log("Consent given. Loading non-essential scripts...");
+                // e.g., loadAnalyticsScript();
+            }
+        },
+        onInitialise: function(status) {
+            if (this.hasConsented()) {
+                console.log("Consent already given. Loading non-essential scripts...");
+                // e.g., loadAnalyticsScript();
+            }
+        }
+    });
+
+// ... rest of your script ...
+
+// ... rest of your script (mobile nav, etc.) ...
+
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
     const navLinks = document.querySelectorAll('.main-nav a');
