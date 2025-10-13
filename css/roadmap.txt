@@ -1,13 +1,17 @@
 essential:
 
 kalender
+
 cookie banner #done
-contact form dass es wirklich mails versendet #muss den link für den redirect nen public link mit https nutzen weil formspree es nur zu public dns einträgen weiterleiten kann
+
+contact form dass es wirklich mails versendet muss den link für den redirect 
+nen public link mit https nutzen weil formspree es nur zu public dns einträgen weiterleiten kann #done
+
 Basic SEO für alle seiten, dass es in der google suche dargestellt wird #done
 
 
 zukunft:
-(Headless) CMS implementieren dass die website klicky bunty ist
+(Headless) CMS implementieren dass das befüllen der website klicky bunty ist
 
 dark light mode
 
@@ -21,7 +25,8 @@ page transition #done
 
 faq?
 
-pricing oder services in verschiedene seiten aufteilen. wenn dann jemand nach bmw tuning sucht findet er die bmw page weil nur pricing schwerer zu finden wäre
+pricing oder services in verschiedene seiten aufteilen. wenn dann jemand nach bmw tuning sucht 
+findet er die bmw page weil nur pricing schwerer zu finden wäre
 
  Detailed "Request a Quote" Form
 

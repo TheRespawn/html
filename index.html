@@ -10,28 +10,51 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 </head>
 
 </head>
 <body>
-
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'light') {
+                const body = document.body;
+                body.classList.add('light-mode');
+                
+                // Directly inject the core light theme styles to win the race condition
+                body.style.setProperty('--primary-bg', '#F5F5F5');
+                body.style.setProperty('--primary-text', '#222222');
+                body.style.setProperty('--secondary-bg', '#FFFFFF');
+                body.style.setProperty('--border-color', '#DDDDDD');
+            }
+        })();
+    </script>
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo">PrecisionTuning</a>
+            
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            <button class="nav-toggle" aria-label="toggle navigation">
+            
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                <span class="icon-sun">☀️</span>
+                <span class="icon-moon">🌙</span>
+            </button>
+            
+            <button class="nav-toggle" aria-label="toggle navigation" aria-expanded="false">
                 <span class="hamburger"></span>
             </button>
         </div>

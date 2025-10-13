@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex, follow">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum | Precision Tuning</title>
-    <meta name="robots" content="noindex, follow">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,15 +13,31 @@
     
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 </head>
-
-</head>
 <body>
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'light') {
+                const body = document.body;
+                body.classList.add('light-mode');
+                
+                // Directly inject the core light theme styles to win the race condition
+                body.style.setProperty('--primary-bg', '#F5F5F5');
+                body.style.setProperty('--primary-text', '#222222');
+                body.style.setProperty('--secondary-bg', '#FFFFFF');
+                body.style.setProperty('--border-color', '#DDDDDD');
+            }
+        })();
+    </script>
     <div class="page-transition-overlay"></div>
+
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo">PrecisionTuning</a>
+            
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -30,6 +47,12 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
+            
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                <span class="icon-sun">☀️</span>
+                <span class="icon-moon">🌙</span>
+            </button>
+            
             <button class="nav-toggle" aria-label="toggle navigation" aria-expanded="false">
                 <span class="hamburger"></span>
             </button>
@@ -39,10 +62,10 @@
     <main>
         <section class="legal-page">
             <div class="container">
-                <h1>Impressum</h1>
+                <h1 data-aos="fade-down">Impressum</h1>
                 
-                <h2>Angaben gemäß § 5 TMG</h2>
-                <p>
+                <h2 data-aos="fade-up">Angaben gemäß § 5 TMG</h2>
+                <p data-aos="fade-up">
                     [Your Full Name]<br>
                     [Your Business Name, if applicable]<br>
                     [Your Street and House Number]<br>
@@ -50,26 +73,26 @@
                     Karlsruhe, Deutschland
                 </p>
 
-                <h2>Kontakt</h2>
-                <p>
+                <h2 data-aos="fade-up">Kontakt</h2>
+                <p data-aos="fade-up">
                     Telefon: [Your Phone Number]<br>
                     E-Mail: [Your Email Address]
                 </p>
 
-                <h2>Umsatzsteuer-ID</h2>
-                <p>
+                <h2 data-aos="fade-up">Umsatzsteuer-ID</h2>
+                <p data-aos="fade-up">
                     Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
                     [Your VAT ID, e.g., DE123456789]
                 </p>
                 
-                <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-                <p>
+                <h2 data-aos="fade-up">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                <p data-aos="fade-up">
                     [Your Full Name]<br>
                     [Your Address, same as above]
                 </p>
                 
-                <h3>Haftungsausschluss (Disclaimer)</h3>
-                <p>This is where the standard liability disclaimer text (Haftungsausschluss) provided by your generator would go.</p>
+                <h3 data-aos="fade-up">Haftungsausschluss (Disclaimer)</h3>
+                <p data-aos="fade-up">This is where the standard liability disclaimer text (Haftungsausschluss) provided by your generator would go.</p>
 
             </div>
         </section>
@@ -96,7 +119,6 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
-
     <script defer src="js/script.js"></script>
 
 </body>

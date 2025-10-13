@@ -6,11 +6,18 @@
     <title>Thank You! | Precision Tuning</title>
     
     <meta name="robots" content="noindex, nofollow">
-    
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'light') {
+                // Apply the class to the <html> tag, not the <body>
+                document.documentElement.classList.add('light-mode');
+            }
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
