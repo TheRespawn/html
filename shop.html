@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Precision Tuning</title>
+    <meta name="description" content="Explore a curated selection of high-quality tuning parts for your vehicle from Precision Tuning in Karlsruhe.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+</head>
+<body>
+    <script>
+        // Anti-flicker theme script - matches your other pages
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'light') {
+                const body = document.body;
+                body.classList.add('light-mode');
+                
+                body.style.setProperty('--primary-bg', '#F5F5F5');
+                body.style.setProperty('--primary-text', '#222222');
+                body.style.setProperty('--secondary-bg', '#FFFFFF');
+                body.style.setProperty('--border-color', '#DDDDDD');
+            }
+        })();
+    </script>
+    <div class="page-transition-overlay"></div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">PrecisionTuning</a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="shop.html" class="active">Shop</a></li> 
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                <span class="icon-sun">☀️</span>
+                <span class="icon-moon">🌙</span>
+            </button>
+            
+            <button class="nav-toggle" aria-label="toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="shop-hero">
+            <div class="container" data-aos="fade-down">
+                <h1>Our Performance Parts</h1>
+                <p>A curated selection of high-quality components to unlock your car's true potential.</p>
+            </div>
+        </section>
+
+        <section class="shop-section">
+            <div class="container shop-layout">
+                <aside class="shop-sidebar" data-aos="fade-right" data-aos-delay="100">
+                    <h2>Filter Parts</h2>
+                    <div class="filter-group">
+                        <h3>Categories</h3>
+                        <div class="filter-options" id="category-filters">
+                            <label><input type="radio" name="category" value="all" checked> All Categories</label>
+                            </div>
+                    </div>
+                </aside>
+
+                <div class="shop-products" data-aos="fade-left" data-aos-delay="200">
+                    
+                    <div class="shop-controls">
+                        <div class="sort-control">
+                            <label for="sort-select">Sort by:</label>
+                            <select id="sort-select" class="sort-select">
+                                <option value="default">Default</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="name-asc">Name: A to Z</option>
+                            </select>
+                        </div>
+                        <div class="view-toggle">
+                            <button id="grid-view-btn" class="view-btn active" aria-label="Grid View">Grid</button>
+                            <button id="list-view-btn" class="view-btn" aria-label="List View">List</button>
+                        </div>
+                    </div>
+
+                    <div id="parts-container" class="parts-grid">
+                        </div>
+
+                    <p id="loading-message" class="loading-message">Loading amazing parts...</p>
+                    <p id="no-parts-message" class="no-parts" style="display: none;">No parts found matching your selection.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" data-aos="zoom-in">
+            <div class="container">
+                <h2>Can't Find What You're Looking For?</h2>
+                <p>We can source a wide range of parts. Get in touch for custom orders.</p>
+                <a href="contact.html" class="cta-button">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Precision Tuning. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">[IG]</a>
+                    <a href="#" aria-label="Facebook">[FB]</a>
+                    <a href="#" aria-label="YouTube">[YT]</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollTopBtn" title="Go to top">▲</button>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+
+    <script defer src="js/script.js"></script>
+</body>
+</html>

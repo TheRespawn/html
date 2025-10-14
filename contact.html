@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Precision Tuning</title>
     <meta name="description" content="Contact Precision Tuning in Karlsruhe to book your consultation. Get in touch via our form, phone, or book an appointment online for your next performance upgrade.">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 </head>
-
 <body>
     <script>
         (function() {
@@ -21,8 +20,6 @@
             if (theme === 'light') {
                 const body = document.body;
                 body.classList.add('light-mode');
-                
-                // Directly inject the core light theme styles to win the race condition
                 body.style.setProperty('--primary-bg', '#F5F5F5');
                 body.style.setProperty('--primary-text', '#222222');
                 body.style.setProperty('--secondary-bg', '#FFFFFF');
@@ -34,46 +31,41 @@
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo">PrecisionTuning</a>
-            
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
             </nav>
-            
             <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
                 <span class="icon-sun">☀️</span>
                 <span class="icon-moon">🌙</span>
             </button>
-            
             <button class="nav-toggle" aria-label="toggle navigation" aria-expanded="false">
                 <span class="hamburger"></span>
             </button>
         </div>
     </header>
-
     <main>
         <section class="contact-page">
             <div class="container">
-                <div class="page-header">
+                <div class="page-header" data-aos="fade-down">
                     <h1>Get In Touch</h1>
                     <p>Ready to start your project? Book a time with us or send a message below.</p>
                 </div>
-
-                <section id="booking" class="booking-section">
+                <section id="booking" class="booking-section" data-aos="fade-up">
                     <h2>Book a Consultation</h2>
                     <div class="booking-widget-container">
                         <p class="widget-placeholder">Booking calendar will load here...</p>
                     </div>
                 </section>
-                
                 <section id="contact-form-section" class="contact-details-section">
                     <div class="contact-grid">
-                        <div class="contact-form-container">
+                        <div class="contact-form-container" data-aos="fade-right">
                             <h3>Send Us a Message</h3>
                             <form action="https://formspree.io/f/mblzarnz" method="POST" class="contact-form">
                                 <input type="hidden" name="_next" value="https://localhost/thank-you.html">
@@ -96,8 +88,7 @@
                                 <button type="submit" class="cta-button">Send Message</button>
                             </form>
                         </div>
-
-                        <div class="contact-info-container">
+                        <div class="contact-info-container" data-aos="fade-left">
                             <h3>Our Info</h3>
                             <ul class="contact-info-list">
                                 <li><strong>[ICON] Address:</strong> Motor Street 123, 76131 Karlsruhe, Germany</li>
@@ -116,30 +107,26 @@
             </div>
         </section>
     </main>
-
     <footer class="main-footer">
-    <div class="container">
-        <div class="footer-content">
-            <p>&copy; 2025 Precision Tuning. All Rights Reserved.</p>
-            <div class="footer-legal">
-                <a href="impressum.html">Impressum</a>
-                <a href="datenschutz.html">Datenschutz</a>
-            </div>
-            <div class="social-links">
-                <a href="#" aria-label="Instagram">[IG]</a>
-                <a href="#" aria-label="Facebook">[FB]</a>
-                <a href="#" aria-label="YouTube">[YT]</a>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Precision Tuning. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">[IG]</a>
+                    <a href="#" aria-label="Facebook">[FB]</a>
+                    <a href="#" aria-label="YouTube">[YT]</a>
+                </div>
             </div>
         </div>
-    </div>
     </footer>
-
     <button id="scrollTopBtn" title="Go to top">▲</button>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
-
     <script defer src="js/script.js"></script>
-
 </body>
 </html>
