@@ -1,15 +1,16 @@
 const express = require('express');
 const mysql = require('mysql2/promise');
+
+// ====================================================================
+// 1. LOAD ENVIRONMENT VARIABLES FROM .env FILE
+// This line MUST be at the top, before you use any environment variables.
+// ====================================================================
+require('dotenv').config();
+
 const app = express();
 const port = 3000;
 
-// ====================================================================
-// CRITICAL FIX: MOVE CORS MIDDLEWARE TO THE TOP
-// This ensures that the Access-Control-Allow-Origin header is set
-// for ALL requests, including the /api/v1/tuning-parts endpoint.
-// ====================================================================
 app.use((req, res, next) => {
-    // Setting '*' allows connections from any origin (local file, localhost, etc.)
     res.setHeader('Access-Control-Allow-Origin', '*'); 
     res.setHeader('Access-Control-Allow-Methods', 'GET');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -17,19 +18,26 @@ app.use((req, res, next) => {
 });
 
 // ====================================================================
-// 1. DOCKER DATABASE CONFIGURATION
+// 2. DOCKER DATABASE CONFIGURATION
+// Use process.env to securely access the variables loaded by dotenv.
 // ====================================================================
 const dbConfig = {
     host: '127.0.0.1',  
     port: 3307,         
     user: 'root',       
-    password: '#Kotowaifu13', // Your actual password
+    // CORRECT: Access the password via process.env
+    password: process.env.DB_PASSWORD, 
     database: 'tuning_db'
 };
 
 app.get('/api/v1/tuning-parts', async (req, res) => {
     let connection;
     try {
+        // You can add a check to make sure the password was loaded
+        if (!dbConfig.password) {
+            throw new Error('Database password is not defined. Check your .env file.');
+        }
+
         console.log(`[API] Attempting to connect to DB on port ${dbConfig.port}...`);
         
         connection = await mysql.createConnection(dbConfig);
